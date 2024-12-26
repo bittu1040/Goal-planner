@@ -1,59 +1,28 @@
-# GoalPlanner
+# Angular Application Features
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+## Goal Input Form
 
-## Development server
+- **Text input for goal description**
+- **Date picker for target date** (restricted to 2024-2025)
 
-To start a local development server, run:
+## Timeline Chart
 
-```bash
-ng serve
-```
+Using `ng2-charts`:
+- Displays goals on a time-based scatter plot
+- Updates automatically when new goals are added
+- Is responsive and interactive
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## PDF Generation Functionality
 
-## Code scaffolding
+- Creates a PDF document with all goals
+- Lists goals with their descriptions and target dates
+- Can be downloaded with one click
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Application Usage
 
-```bash
-ng generate component component-name
-```
+The application uses a service to manage the goals state and provides a clean, user-friendly interface. You can:
+- Enter your goals using the form at the top
+- See them appear on the timeline chart
+- Generate a PDF report of all your goals by clicking the "Generate PDF" button
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The development server is starting up. You can start adding your 2025 goals and see them visualized on the timeline!
