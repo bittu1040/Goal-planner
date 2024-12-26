@@ -1,3 +1,11 @@
-Goal-planner
-
-<router-outlet />
+<div class="d-flex flex-column min-vh-100">
+  <div style="margin-bottom: 61px;">
+    <app-navigation></app-navigation>
+  </div>  
+  <main class="container-fluid main-content flex-grow-1">
+    <div class="container">
+      <router-outlet />
+    </div>
+  </main>
+  <app-footer></app-footer>
+</div>

@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+$light-primary-color: #2193b0;
+$light-secondary-color: #6dd5ed;
+$light-bg-color: #ffffff;
+$light-text-color: #000000;
+
+$dark-primary-color: #0d47a1;
+$dark-secondary-color: #1976d2;
+$dark-bg-color: #121212;
+$dark-text-color: #ffffff;
+
+
+// Light Theme Colors
+$light-primary-color: #3498db; // Bright Blue
+$light-secondary-color: #2ecc71; // Bright Green
+$light-bg-color: #ecf0f1; // Light Gray
+$light-text-color: #2c3e50; // Dark Blue
+
+// Dark Theme Colors
+$dark-primary-color: #0d47a1; // Dark Blue
+$dark-secondary-color: #1976d2; // Medium Blue
+$dark-bg-color: #121212; // Very Dark Gray
+$dark-text-color: #ffffff; // White
+
+// Dark Theme Styles
+.dark-theme {
+  --primary-color: #0d47a1;
+  --secondary-color: #1976d2;
+  --bg-color: #121212;
+  --text-color: #ffffff;
+}
+
+// Light Theme Styles (default)
+body {
+  --primary-color: #3498db;
+  --secondary-color: #2ecc71;
+  --bg-color: #ffffff;
+  --text-color: #2c3e50;
+}

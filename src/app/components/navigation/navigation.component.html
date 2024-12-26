@@ -1,0 +1,60 @@
+
+<nav class="navbar fixed-top">
+  <div class="container">
+    <div class="d-flex align-items-center">
+      <span class="logo">🎯</span>
+      <a class="navbar-brand ms-2" href="#">Goal Planner</a>
+    </div>
+    <div class="justify-content-end">
+      <div class="navbar-nav">
+        <div class="nav-item ms-3">
+          <button class="btn btn-link nav-link" (click)="toggleTheme()">
+            <i class="bi" [ngClass]="{'bi-sun': !isDarkTheme, 'bi-moon': isDarkTheme}"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- responsive nav bar with extra menu -->
+
+<!-- <nav class="navbar navbar-expand-lg navbar-expand-md fixed-top">
+    <div class="container">
+      <div class="d-flex align-items-center">
+        <span class="logo">🎯</span>
+        <a class="navbar-brand ms-2" href="#">Goal Planner</a>
+      </div>
+      <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" [ngbCollapse]="isCollapsed">
+        <div class="navbar-nav">
+          <a class="nav-link" href="#">
+            <i class="bi bi-person-circle"></i> Profile
+          </a>
+          <div class="nav-item ms-3">
+            <button class="btn btn-link nav-link" (click)="toggleTheme()">
+              <i class="bi" [ngClass]="{'bi-sun': !isDarkTheme, 'bi-moon': isDarkTheme}"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav> -->
+

@@ -1,0 +1,25 @@
+@import '../../../styles.scss';
+
+.footer-bg {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.footer-text {
+  color: var(--text-color);
+}
+
+.footer-icon {
+  color: var(--text-color)
+}
+
+
+@media (max-width: 576px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-text {
+    margin-bottom: 1rem;
+  }
+}

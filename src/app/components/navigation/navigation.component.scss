@@ -1,0 +1,20 @@
+@import '../../../styles.scss';
+
+.navbar {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  padding: 0.5rem 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+}
+
+.nav-link {
+  color: var(--text-color);
+  font-size: 1.2rem;
+}
+
+.navbar-brand {
+  color: var(--text-color)
+}
