@@ -1,4 +1,21 @@
 <div class="timeline">
-    <h2>Goals Timeline</h2>
-    <p>Timeline will be displayed here</p>
+  <h2>Goals Timeline</h2>
+  <div class="timeline-container">
+    @if(goals.length > 0){
+    @for(goal of goals; track goal.title){
+    <div class="card timeline-box">
+      <div class="card-body">
+        <h3 class="card-title">{{ goal.title }}</h3>
+        <p class="card-text">{{ goal.description }}</p>
+        <span class="timeline-date">{{ goal.date }}</span>
+      </div>
+    </div>
+    }
+  }
+  @else {
+    <div class="no-goals">
+      <p>No goals added yet. Please add your first goal!</p>
+    </div>
+  }
   </div>
+</div>
