@@ -27,6 +27,7 @@ $dark-text-color: #ffffff; // White
   --secondary-color: #1976d2;
   --bg-color: #121212;
   --text-color: #ffffff;
+  --box-shadow-color: rgba(255, 255, 255, 0.2);
 }
 
 // Light Theme Styles (default)
@@ -35,4 +36,5 @@ body {
   --secondary-color: #a6d7a3;
   --bg-color: #ffffff;
   --text-color: #2c3e50;
+  --box-shadow-color: rgba(0, 0, 0, 0.2);
 }

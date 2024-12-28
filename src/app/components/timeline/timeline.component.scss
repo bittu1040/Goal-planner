@@ -1,10 +1,12 @@
 @use '../../../styles' as *;
 
 .timeline {
+  margin-top: 2rem;
   padding: 2rem;
   background-color: var(--bg-color);
   color: var(--text-color);
-  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--box-shadow-color);
 
   h2 {
     margin-bottom: 2rem;

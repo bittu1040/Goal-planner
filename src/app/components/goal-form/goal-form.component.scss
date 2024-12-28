@@ -3,7 +3,7 @@
   background-color: var(--bg-color);
   color: var(--text-color);
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px var(--box-shadow-color);
 
   h2 {
     text-align: center;
@@ -28,12 +28,7 @@
     border: none;
     border-radius: 4px;
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--text-color);
     cursor: pointer;
-
-    &:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
   }
 }
