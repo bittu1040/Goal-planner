@@ -2,7 +2,7 @@
   <h2>Add New Goal</h2>
   <form [formGroup]="goalForm" (ngSubmit)="onSubmit()">
     <div class="row d-flex justify-content-between">
-      <div class="form-group col-md-4">
+      <div class="form-group col-md-3">
         <label for="goalMonth">Select Month</label>
         <select id="goalMonth" formControlName="goalMonth" class="form-control">
           @for(month of months; track month){
@@ -10,7 +10,17 @@
           }
         </select> 
       </div>
-      <div class="form-group col-md-6">
+      <div class="form-group col-md-3">
+        <label for="goalTitle">Goal Title</label>
+        <input 
+          type="text" 
+          id="goalTitle" 
+          formControlName="goalTitle" 
+          placeholder="Enter your goal title" 
+          class="form-control" 
+        >
+      </div>
+      <div class="form-group col-md-5">
         <label for="goalText">Goal Description</label>
         <textarea 
           id="goalText" 

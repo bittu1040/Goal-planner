@@ -23,6 +23,7 @@ export class GoalFormComponent {
   constructor(private fb: FormBuilder, private dataService: DataService) {
     this.goalForm = this.fb.group({
       goalMonth: ['January', Validators.required],
+      goalTitle: ['JavaScript', Validators.required],
       goalText: ['Revise ES6', [Validators.required, Validators.maxLength(this.wordLimit * 6)]]
     });
 

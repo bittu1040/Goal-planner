@@ -1,5 +1,5 @@
 export interface Goal {
-    title?: string;
+    goalTitle?: string;
     goalMonth: string;
     goalText: string;
 }
