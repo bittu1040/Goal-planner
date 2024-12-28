@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { NgSelectModule } from '@ng-select/ng-select';
-import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
-
 
 @Component({
   selector: 'app-goal-form',
