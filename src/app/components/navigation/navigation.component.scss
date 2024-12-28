@@ -29,6 +29,9 @@
 @media (max-width: 768px) {
   .contribute-text {
     display: none;
-    gap: 0.5rem;
+  }
+
+  .nav-item {
+    margin-left: 0 !important;
   }
 }
