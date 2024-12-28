@@ -1,25 +1,27 @@
 <div class="goal-form">
   <h2>Add New Goal</h2>
   <form [formGroup]="goalForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="goalMonth">Select Month</label>
-      <select id="goalMonth" formControlName="goalMonth" class="form-control">
-        @for(month of months; track month){
-        <option [value]="month">{{ month }}</option>
-        }
-      </select> 
-    </div>
-    <div class="form-group">
-      <label for="goalText">Goal Description</label>
-      <textarea 
-        id="goalText" 
-        formControlName="goalText" 
-        placeholder="Enter your goal description" 
-        class="form-control goal-input" 
-        (input)="checkWordLimit()"
-        rows="4"
-      ></textarea>
-      <small class="text-muted">{{ wordCount }}/{{ wordLimit }} words</small>
+    <div class="row d-flex justify-content-between">
+      <div class="form-group col-md-4">
+        <label for="goalMonth">Select Month</label>
+        <select id="goalMonth" formControlName="goalMonth" class="form-control">
+          @for(month of months; track month){
+          <option [value]="month">{{ month }}</option>
+          }
+        </select> 
+      </div>
+      <div class="form-group col-md-6">
+        <label for="goalText">Goal Description</label>
+        <textarea 
+          id="goalText" 
+          formControlName="goalText" 
+          placeholder="Enter your goal description" 
+          class="form-control goal-input" 
+          (input)="checkWordLimit()"
+          rows="4"
+        ></textarea>
+        <small class="text-muted">{{ wordCount }}/{{ wordLimit }} words</small>
+      </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="wordCount > wordLimit || goalForm.invalid">Add Goal</button>
   </form>

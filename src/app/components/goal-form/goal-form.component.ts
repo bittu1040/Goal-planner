@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-goal-form',
@@ -19,10 +20,10 @@ export class GoalFormComponent {
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private dataService: DataService) {
     this.goalForm = this.fb.group({
       goalMonth: ['January', Validators.required],
-      goalText: ['', [Validators.required, Validators.maxLength(this.wordLimit * 6)]]
+      goalText: ['Revise ES6', [Validators.required, Validators.maxLength(this.wordLimit * 6)]]
     });
 
     this.goalForm.get('goalText')?.valueChanges.subscribe(() => {
@@ -31,7 +32,6 @@ export class GoalFormComponent {
   }
 
   checkWordLimit() {
-    console.log('Checking word limit...');
     const goalText = this.goalForm.get('goalText')?.value || '';
     this.wordCount = goalText.split(/\s+/).filter((word:any) => word.length > 0).length;
   }
@@ -39,9 +39,8 @@ export class GoalFormComponent {
   onSubmit() {
     if (this.goalForm.valid && this.wordCount <= this.wordLimit) {
       const goal = this.goalForm.value;
-      console.log('Goal submitted:', goal);
-      this.goalForm.reset();
+      this.dataService.addGoal(goal);
       this.wordCount = 0;
-    }
+     }
   }
 }

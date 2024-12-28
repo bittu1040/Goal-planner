@@ -1,13 +1,13 @@
 <div class="timeline">
   <h2>Goals Timeline</h2>
   <div class="timeline-container">
-    @if(goals.length > 0){
-    @for(goal of goals; track goal.title){
+    @if(dataService.getGoals().length > 0){
+    @for(goal of dataService.getGoals(); track goal.title){
     <div class="card timeline-box">
       <div class="card-body">
         <h3 class="card-title">{{ goal.title }}</h3>
-        <p class="card-text">{{ goal.description }}</p>
-        <span class="timeline-date">{{ goal.date }}</span>
+        <p class="card-text">{{ goal.goalText }}</p>
+        <span class="timeline-date">{{ goal.goalMonth }}</span>
       </div>
     </div>
     }
