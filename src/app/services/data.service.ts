@@ -35,10 +35,10 @@ export class DataService {
     }
   }
 
-  removeGoal(goalTitle: any) {
+  removeGoalByIndex(index: number) {
     try {
       this.goals.update(goals => {
-        const updatedGoals = goals.filter(g => g.goalTitle !== goalTitle);
+        const updatedGoals = goals.filter((_, i) => i !== index);
         localStorage.setItem('goals', JSON.stringify(updatedGoals));
         return updatedGoals;
       });

@@ -2,10 +2,10 @@
   <h2>Goals Timeline</h2>
   <div class="timeline-container">
     @if(dataService.goalsList().length > 0){
-    @for(goal of dataService.goalsList(); track goal.goalTitle){
+    @for(goal of dataService.goalsList(); track $index){
     <div class="card timeline-box">
       <div class="card-body">
-        <button class="close-btn" (click)="dataService.removeGoal(goal.goalTitle)">&times;</button>
+        <button class="close-btn" (click)="dataService.removeGoalByIndex($index)">&times;</button>
         <h3 class="card-title">{{ goal.goalTitle }}</h3>
         <p class="card-text">{{ goal.goalText }}</p>
         <span class="timeline-date">{{ goal.goalMonth }}</span>

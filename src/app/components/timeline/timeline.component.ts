@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
-import { Goal } from '../../models/goal.model';
 
 
 
