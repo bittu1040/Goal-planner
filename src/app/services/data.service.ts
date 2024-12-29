@@ -6,28 +6,45 @@ import { Goal } from '../models/goal.model';
 })
 export class DataService {
 
-  goals = signal<Goal[]>([
-    // { goalTitle: 'Goal 1', goalText: 'Description of Goal 1', goalMonth: 'Date 1' },
-    // { goalTitle: 'Goal 2', goalText: 'Description of Goal 2', goalMonth: 'Date 2' },
-    // { goalTitle: 'Goal 3', goalText: 'Description of Goal 3', goalMonth: 'Date 3' },
-    // { goalTitle: 'Goal 4', goalText: 'Description of Goal 4', goalMonth: 'Date 4' },
-    // { goalTitle: 'Goal 5', goalText: 'Description of Goal 5', goalMonth: 'Date 5' },
-    // { goalTitle: 'Goal 6', goalText: 'Description of Goal 6', goalMonth: 'Date 6' }
-  ]);
+  goals = signal<Goal[]>(this.loadInitialGoals());
 
-  constructor() { }
+  readonly goalsList = this.goals.asReadonly();
 
-  getGoals() {
-    return this.goals();
-  }
+
+  constructor() {
+    this.loadInitialGoals();
+   }
 
   addGoal(goal: Goal) {
-    this.goals.update(goals => [...goals, goal]);
-    console.log(this.goals());
+    this.goals.update((goals: Goal[]) =>{
+      const updatedGoals = [...goals, goal];
+      console.log(updatedGoals);
+      localStorage.setItem('goals', JSON.stringify(updatedGoals));
+      return updatedGoals;
+    });
   }
 
-  removeGoal(goal: Goal) {
-    this.goals.update(goals => goals.filter(g => g.goalTitle !== goal.goalTitle));
+
+  private loadInitialGoals(): Goal[] {
+    try {
+      const savedGoals = localStorage.getItem('goals');
+      return savedGoals ? JSON.parse(savedGoals) : [];
+    } catch (error) {
+      console.error('Error loading goals:', error);
+      return [];
+    }
+  }
+
+  removeGoal(goalTitle: string) {
+    try {
+      this.goals.update(goals => {
+        const updatedGoals = goals.filter(g => g.goalTitle !== goalTitle);
+        localStorage.setItem('goals', JSON.stringify(updatedGoals));
+        return updatedGoals;
+      });
+    } catch (error) {
+      console.error('Error removing goal:', error);
+    }
   }
 
 

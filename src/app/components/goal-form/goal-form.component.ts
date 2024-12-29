@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 
@@ -13,6 +13,7 @@ export class GoalFormComponent {
   goalForm: FormGroup;
   wordCount: number = 0;
   wordLimit: number = 50;
+  dataService= inject(DataService);
  
 
   months: string[] = [
@@ -20,7 +21,7 @@ export class GoalFormComponent {
     'July', 'August', 'September', 'October', 'November', 'December'
   ];
 
-  constructor(private fb: FormBuilder, private dataService: DataService) {
+  constructor(private fb: FormBuilder) {
     this.goalForm = this.fb.group({
       goalMonth: ['January', Validators.required],
       goalTitle: ['JavaScript', Validators.required],

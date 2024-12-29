@@ -11,16 +11,10 @@ import { Goal } from '../../models/goal.model';
   styleUrl: './timeline.component.scss'
 })
 export class TimelineComponent {
-  goals: Goal[] = [];
   Math= Math;
   dataService= inject(DataService);
   constructor() { }
   ngOnInit() {
-    // this.getGoals();
-    console.log(this.dataService.getGoals());
   }
 
-  // getGoals() {
-  //   this.goals = Array.from(this.dataService.getGoals());
-  // }
 }

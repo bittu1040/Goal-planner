@@ -1,8 +1,8 @@
 <div class="timeline">
   <h2>Goals Timeline</h2>
   <div class="timeline-container">
-    @if(dataService.getGoals().length > 0){
-    @for(goal of dataService.getGoals(); track goal.goalTitle){
+    @if(dataService.goalsList().length > 0){
+    @for(goal of dataService.goalsList(); track goal.goalTitle){
     <div class="card timeline-box">
       <div class="card-body">
         <h3 class="card-title">{{ goal.goalTitle }}</h3>
