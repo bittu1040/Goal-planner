@@ -20,6 +20,7 @@
   }
 
   .timeline-box {
+    position: relative;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: var(--text-color);
     padding: 1rem;
@@ -40,6 +41,21 @@
       margin-top: 0.5rem;
       font-size: 0.9rem;
       color: var(--text-color);
+    }
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      cursor: pointer;
+      display: none;
+    }
+
+    &:hover .close-btn {
+      display: block;
     }
   }
   .no-goals {

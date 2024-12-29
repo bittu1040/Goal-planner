@@ -35,7 +35,7 @@ export class DataService {
     }
   }
 
-  removeGoal(goalTitle: string) {
+  removeGoal(goalTitle: any) {
     try {
       this.goals.update(goals => {
         const updatedGoals = goals.filter(g => g.goalTitle !== goalTitle);
