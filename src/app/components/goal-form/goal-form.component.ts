@@ -43,6 +43,8 @@ export class GoalFormComponent {
       const goal = this.goalForm.value;
       this.dataService.addGoal(goal);
       this.wordCount = 0;
+      this.goalForm.get('goalText')?.setValue('');
+      this.goalForm.get('goalTitle')?.setValue('');
      }
   }
 }

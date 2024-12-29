@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { DataService } from '../../services/data.service';
-
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 
 @Component({
@@ -16,7 +17,23 @@ export class TimelineComponent {
   ngOnInit() {
   }
 
-  downloadGoals(format: string) { 
+  downloadGoals(format: string) {
+    const element = document.querySelector('.timeline-container') as HTMLElement;
+    if (format === 'png') {
+      html2canvas(element).then(canvas => {
+        const link = document.createElement('a');
+        link.href = canvas.toDataURL('image/png');
+        link.download = 'goals.png';
+        link.click();
+      });
+    } else if (format === 'pdf') {
+      html2canvas(element).then(canvas => {
+        const imgData = canvas.toDataURL('image/png');
+        const pdf = new jsPDF();
+        pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+        pdf.save('goals.pdf');
+      });
+    }
   }
 
 }
