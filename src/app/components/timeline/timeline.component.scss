@@ -8,8 +8,16 @@
   border-radius: 8px;
   box-shadow: 0 2px 4px var(--box-shadow-color);
 
-  h2 {
-    margin-bottom: 2rem;
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .download-icon {
+    color: var(--text-color);
+    font-size: 1.5rem;
   }
 
   .timeline-container {

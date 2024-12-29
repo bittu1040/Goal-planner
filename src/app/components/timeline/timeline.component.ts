@@ -16,4 +16,7 @@ export class TimelineComponent {
   ngOnInit() {
   }
 
+  downloadGoals(format: string) { 
+  }
+
 }

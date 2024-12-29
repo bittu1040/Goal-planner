@@ -1,5 +1,16 @@
 <div class="timeline">
-  <h2>Goals Timeline</h2>
+  <div class="timeline-header">
+    <h2>Goals Timeline</h2>
+    <div class="dropdown">
+      <a class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi bi-download download-icon"></i>
+      </a>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="#" (click)="downloadGoals('png')">png</a>
+        <a class="dropdown-item" href="#" (click)="downloadGoals('pdf')">pdf</a>
+      </div>
+    </div>
+  </div>
   <div class="timeline-container">
     @if(dataService.goalsList().length > 0){
     @for(goal of dataService.goalsList(); track $index){
