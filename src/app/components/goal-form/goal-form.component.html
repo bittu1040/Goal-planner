@@ -30,7 +30,7 @@
           (input)="checkWordLimit()"
           rows="2"
         ></textarea>
-        <small class="text-muted">{{ wordCount }}/{{ wordLimit }} words</small>
+        <small>{{ wordCount }}/{{ wordLimit }} words</small>
       </div>
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="wordCount > wordLimit || goalForm.invalid">Add Goal</button>
