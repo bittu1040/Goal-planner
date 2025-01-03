@@ -77,6 +77,17 @@
   }
 }
 
+.filter-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+
+  .form-check-label {
+    margin-right: 1rem;
+  }
+}
+
 @media (max-width: 576px) {
   .timeline-container {
     flex-direction: column;

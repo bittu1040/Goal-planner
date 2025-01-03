@@ -13,6 +13,10 @@ export class TimelineComponent {
   Math = Math;
   dataService = inject(DataService);
 
+  filterGoals(filter: string) {
+    this.dataService.filterGoals(filter);
+  }
+
   downloadGoals(format: string) {
     // Collect user input
     const userName = prompt('Please enter your name:');

@@ -11,23 +11,31 @@
       </div>
     </div>
   </div>
+  <div class="filter-container mt-3 mb-3">
+    <label class="form-check-label">
+      <input type="checkbox" class="form-check-input" (click)="filterGoals('Active')"> Active
+    </label>
+    <label class="form-check-label ms-3">
+      <input type="checkbox" class="form-check-input" (click)="filterGoals('Archived')"> Archived
+    </label>
+  </div>
   <div class="timeline-container">
     @if(dataService.goalsList().length > 0){
-    @for(goal of dataService.goalsList(); track $index){
-    <div class="card timeline-box">
-      <div class="card-body">
-        <button class="close-btn" (click)="dataService.removeGoalByIndex($index)">&times;</button>
-        <h3 class="card-title">{{ goal.goalTitle }}</h3>
-        <p class="card-text">{{ goal.goalText }}</p>
-        <span class="timeline-date">{{ goal.goalMonth }}</span>
+      @for(goal of dataService.goalsList(); track $index){
+        <div class="card timeline-box">
+          <div class="card-body">
+            <button class="close-btn" (click)="dataService.removeGoalByIndex($index)">&times;</button>
+            <h3 class="card-title">{{ goal.goalTitle }}</h3>
+            <p class="card-text">{{ goal.goalText }}</p>
+            <span class="timeline-date">{{ goal.goalMonth }}</span>
+          </div>
+        </div>
+       }
+     }
+    @else {
+      <div class="no-goals">
+        <p>No goals added yet. Please add your first goal!</p>
       </div>
-    </div>
-    }
-  }
-  @else {
-    <div class="no-goals">
-      <p>No goals added yet. Please add your first goal!</p>
-    </div>
-  }
+     }
   </div>
 </div>

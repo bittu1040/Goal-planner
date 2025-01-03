@@ -47,5 +47,11 @@ export class DataService {
     }
   }
 
+  filterGoals(filter: string) {
+    // this.goals.update(goals => {
+    //   const filteredGoals = goals.filter(goal => goal.goalState === filter);
+    //   return filteredGoals;
+    // });
+  }
 
 }

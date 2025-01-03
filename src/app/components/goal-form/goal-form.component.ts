@@ -41,6 +41,7 @@ export class GoalFormComponent {
   onSubmit() {
     if (this.goalForm.valid && this.wordCount <= this.wordLimit) {
       const goal = this.goalForm.value;
+      goal.goalState = 'Active';
       this.dataService.addGoal(goal);
       this.wordCount = 0;
       this.goalForm.get('goalText')?.setValue('');
