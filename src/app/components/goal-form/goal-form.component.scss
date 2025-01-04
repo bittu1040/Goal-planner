@@ -32,4 +32,13 @@
     color: var(--text-color);
     cursor: pointer;
   }
+
+  .form-control {
+    background-color: var(--fc-bg-color);
+
+    &:focus {
+      box-shadow: var(--fc-box-shadow-color);
+      border-color: var(--fc-f-border-color);
+    }
+  }
 }

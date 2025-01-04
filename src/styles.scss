@@ -16,18 +16,27 @@ $light-bg-color: #ecf0f1; // Light Gray
 $light-text-color: #2c3e50; // Dark Blue
 
 // Dark Theme Colors
-$dark-primary-color: #0d47a1; // Dark Blue
-$dark-secondary-color: #1976d2; // Medium Blue
-$dark-bg-color: #121212; // Very Dark Gray
-$dark-text-color: #ffffff; // White
+// $dark-primary-color: #0d47a1; // Dark Blue
+// $dark-secondary-color: #1976d2; // Medium Blue
+// $dark-bg-color: #121212; // Very Dark Gray
+// $dark-text-color: #ffffff; // White
+
+// Warm Gray Colors
+$dark-primary-color: #1e1e1e;
+$dark-secondary-color: #2c2c2c;
+$dark-bg-color: #4b4b4b;
+$dark-text-color: #f0f0f0;
 
 // Dark Theme Styles
 .dark-theme {
-  --primary-color: #0d47a1;
-  --secondary-color: #1976d2;
-  --bg-color: #121212;
-  --text-color: #ffffff;
-  --box-shadow-color: rgba(255, 255, 255, 0.2);
+  --primary-color: #1e1e1e;
+  --secondary-color: #2c2c2c;
+  --bg-color: #4b4b4b;
+  --text-color: #f0f0f0;
+  --box-shadow-color: rgba(255, 255, 255, 0.1);
+  --fc-bg-color: #e0e0e0;
+  --fc-box-shadow-color: 0 0 0 .25rem rgba(253, 254, 255, .25);
+  --fc-f-border-color: #c9cacc;
 }
 
 // Light Theme Styles (default)
@@ -37,4 +46,7 @@ body {
   --bg-color: #ffffff;
   --text-color: #2c3e50;
   --box-shadow-color: rgba(0, 0, 0, 0.2);
+  --fc-bg-color: ##fff;
+  --fc-box-shadow-color: 0 0 0 .25rem rgba(13, 110, 253, .25);
+  --fc-f-border-color: #86b7fe;
 }
