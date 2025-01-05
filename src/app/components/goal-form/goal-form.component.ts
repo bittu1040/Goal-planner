@@ -25,7 +25,8 @@ export class GoalFormComponent {
     this.goalForm = this.fb.group({
       goalMonth: ['January', Validators.required],
       goalTitle: ['JavaScript', Validators.required],
-      goalText: ['Revise ES6', [Validators.required, Validators.maxLength(this.wordLimit * 6)]]
+      goalText: ['Revise ES6', [Validators.required, Validators.maxLength(this.wordLimit * 6)]],
+      goalState: ['active', Validators.required]
     });
 
     this.goalForm.get('goalText')?.valueChanges.subscribe(() => {
@@ -41,7 +42,6 @@ export class GoalFormComponent {
   onSubmit() {
     if (this.goalForm.valid && this.wordCount <= this.wordLimit) {
       const goal = this.goalForm.value;
-      goal.goalState = 'Active';
       this.dataService.addGoal(goal);
       this.wordCount = 0;
       this.goalForm.get('goalText')?.setValue('');

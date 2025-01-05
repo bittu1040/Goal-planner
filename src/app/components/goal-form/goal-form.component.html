@@ -32,6 +32,18 @@
         ></textarea>
         <small>{{ wordCount }}/{{ wordLimit }} words</small>
       </div>
+<!-- 
+      <div class="form-group">
+        <label for="goalState">State</label>
+        <select
+          id="goalState"
+          formControlName="goalState"
+          class="form-control"
+        >
+          <option value="active">Active</option>
+          <option value="archived">Archived</option>
+        </select>
+      </div> -->
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="wordCount > wordLimit || goalForm.invalid">Add Goal</button>
   </form>

@@ -1,8 +1,8 @@
-<div class="timeline">
+ <div class="timeline">
   <div class="timeline-header">
     <h2>Goals Timeline</h2>
     <div class="dropdown">
-      <a class="btn" [class.disabled]="!(dataService.goalsList().length > 0)" data-bs-toggle="dropdown" aria-expanded="false">
+      <a class="btn" [class.disabled]="!(filteredGoals().length > 0)" data-bs-toggle="dropdown" aria-expanded="false">
         <i class="bi bi-download download-icon"></i>
       </a>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" >
@@ -13,21 +13,30 @@
   </div>
   <div class="filter-container mt-3 mb-3">
     <label class="form-check-label">
-      <input type="checkbox" class="form-check-input" (click)="filterGoals('Active')"> Active
+      <input type="checkbox" class="form-check-input" [ngModel]="showActive()" (ngModelChange)="showActive.set($event)"> Active
     </label>
     <label class="form-check-label ms-3">
-      <input type="checkbox" class="form-check-input" (click)="filterGoals('Archived')"> Archived
+      <input type="checkbox" class="form-check-input" [ngModel]="showArchived()" (ngModelChange)="showArchived.set($event)"> Archived
     </label>
   </div>
   <div class="timeline-container">
-    @if(dataService.goalsList().length > 0){
-      @for(goal of dataService.goalsList(); track $index){
+    @if(filteredGoals().length > 0){
+      @for(goal of filteredGoals(); track $index){
         <div class="card timeline-box">
           <div class="card-body">
+            <!-- <button 
+            class="action-button"
+            (click)="onActionClick(goal)"
+          >
+            {{ goal.goalState === 'active' ? 'Archive' : 'Remove' }}
+          </button> -->
             <button class="close-btn" (click)="dataService.removeGoalByIndex($index)">&times;</button>
             <h3 class="card-title">{{ goal.goalTitle }}</h3>
             <p class="card-text">{{ goal.goalText }}</p>
             <span class="timeline-date">{{ goal.goalMonth }}</span>
+            <span class="state-badge" [class.archived]="goal.goalState === 'archived'">
+              {{ goal.goalState }}
+            </span>
           </div>
         </div>
        }

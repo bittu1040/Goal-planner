@@ -1,11 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-timeline',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
 })
@@ -13,9 +14,16 @@ export class TimelineComponent {
   Math = Math;
   dataService = inject(DataService);
 
-  filterGoals(filter: string) {
-    this.dataService.filterGoals(filter);
-  }
+  showActive = signal(true);
+  showArchived = signal(true);
+  goals = this.dataService.goals;
+
+  filteredGoals = computed(() => 
+    this.goals().filter(goal => 
+      (goal.goalState === 'active' && this.showActive()) || 
+      (goal.goalState === 'archived' && this.showArchived())
+    )
+  );
 
   downloadGoals(format: string) {
     // Collect user input

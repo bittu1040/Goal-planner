@@ -1,50 +1,38 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Goal } from '../models/goal.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+  private readonly STORAGE_KEY = 'goals';
+  private goalsSignal = signal<Goal[]>(this.loadInitialGoals());
 
-  goals = signal<Goal[]>(this.loadInitialGoals());
-
-  readonly goalsList = this.goals.asReadonly();
-
-
-  constructor() {
-    this.loadInitialGoals();
-   }
-
-  addGoal(goal: Goal) {
-    this.goals.update((goals: Goal[]) =>{
-      const updatedGoals = [...goals, goal];
-      console.log(updatedGoals);
-      localStorage.setItem('goals', JSON.stringify(updatedGoals));
-      return updatedGoals;
-    });
-  }
-
+  goals = computed(() => this.goalsSignal());
 
   private loadInitialGoals(): Goal[] {
-    try {
-      const savedGoals = localStorage.getItem('goals');
-      return savedGoals ? JSON.parse(savedGoals) : [];
-    } catch (error) {
-      console.error('Error loading goals:', error);
-      return [];
-    }
+    const storedGoals = localStorage.getItem(this.STORAGE_KEY);
+    return storedGoals ? JSON.parse(storedGoals) : [];
   }
 
+  addGoal(goal: Goal): void {
+    const currentGoals = this.goalsSignal();
+    const newGoals = [...currentGoals, goal];
+    this.goalsSignal.set(newGoals);
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newGoals));
+  }
+
+
   removeGoalByIndex(index: number) {
-    try {
-      this.goals.update(goals => {
-        const updatedGoals = goals.filter((_, i) => i !== index);
-        localStorage.setItem('goals', JSON.stringify(updatedGoals));
-        return updatedGoals;
-      });
-    } catch (error) {
-      console.error('Error removing goal:', error);
-    }
+    // try {
+    //   this.goals.update(goals => {
+    //     const updatedGoals = goals.filter((_, i) => i !== index);
+    //     localStorage.setItem('goals', JSON.stringify(updatedGoals));
+    //     return updatedGoals;
+    //   });
+    // } catch (error) {
+    //   console.error('Error removing goal:', error);
+    // }
   }
 
   filterGoals(filter: string) {
