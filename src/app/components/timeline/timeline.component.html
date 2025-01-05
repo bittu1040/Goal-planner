@@ -24,13 +24,7 @@
       @for(goal of filteredGoals(); track $index){
         <div class="card timeline-box">
           <div class="card-body">
-            <!-- <button 
-            class="action-button"
-            (click)="onActionClick(goal)"
-          >
-            {{ goal.goalState === 'active' ? 'Archive' : 'Remove' }}
-          </button> -->
-            <button class="close-btn" (click)="dataService.removeGoalByIndex($index)">&times;</button>
+            <button class="close-btn" (click)="onActionClick(goal)">&times;</button>
             <h3 class="card-title">{{ goal.goalTitle }}</h3>
             <p class="card-text">{{ goal.goalText }}</p>
             <span class="timeline-date">{{ goal.goalMonth }}</span>

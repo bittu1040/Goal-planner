@@ -3,6 +3,7 @@ import { DataService } from '../../services/data.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { FormsModule } from '@angular/forms';
+import { Goal } from '../../models/goal.model';
 
 @Component({
   selector: 'app-timeline',
@@ -24,6 +25,14 @@ export class TimelineComponent {
       (goal.goalState === 'archived' && this.showArchived())
     )
   );
+
+  onActionClick(goal: Goal): void {
+    if (goal.goalState === 'active') {
+      this.dataService.archiveGoal(goal);
+    } else {
+      this.dataService.removeGoal(goal);
+    }
+  }
 
   downloadGoals(format: string) {
     // Collect user input

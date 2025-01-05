@@ -15,11 +15,29 @@ export class DataService {
     return storedGoals ? JSON.parse(storedGoals) : [];
   }
 
+  private updateLocalStorage(goals: Goal[]): void {
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(goals));
+    this.goalsSignal.set(goals);
+  }
+
   addGoal(goal: Goal): void {
     const currentGoals = this.goalsSignal();
     const newGoals = [...currentGoals, goal];
-    this.goalsSignal.set(newGoals);
-    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(newGoals));
+    this.updateLocalStorage(newGoals);
+  }
+
+  archiveGoal(goalToArchive: Goal): void {
+    const currentGoals = this.goalsSignal();
+    const updatedGoals = currentGoals.map(goal => 
+      goal === goalToArchive ? { ...goal, goalState: 'archived' as 'archived' } : goal
+    );
+    this.updateLocalStorage(updatedGoals);
+  }
+
+  removeGoal(goalToRemove: Goal): void {
+    const currentGoals = this.goalsSignal();
+    const updatedGoals = currentGoals.filter(goal => goal !== goalToRemove);
+    this.updateLocalStorage(updatedGoals);
   }
 
 
