@@ -28,9 +28,21 @@ export class TimelineComponent {
 
   onActionClick(goal: Goal): void {
     if (goal.goalState === 'active') {
-      this.dataService.archiveGoal(goal);
+      const confirmArchive = window.confirm(
+        'Are you sure you want to archive this goal?'
+      );
+      if (confirmArchive) {
+        this.dataService.archiveGoal(goal);
+        window.alert('The goal has been archived.');
+      }
     } else {
-      this.dataService.removeGoal(goal);
+      const confirmRemove = window.confirm(
+        'This goal is already archived. Are you sure you want to remove it?'
+      );
+      if (confirmRemove) {
+        this.dataService.removeGoal(goal);
+        window.alert('The goal has been removed.');
+      }
     }
   }
 
