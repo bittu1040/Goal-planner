@@ -33,7 +33,6 @@ export class TimelineComponent {
       );
       if (confirmArchive) {
         this.dataService.archiveGoal(goal);
-        window.alert('The goal has been archived.');
       }
     } else {
       const confirmRemove = window.confirm(
@@ -45,7 +44,7 @@ export class TimelineComponent {
       }
     }
   }
-  
+
 
   downloadGoals(format: string) {
     // Collect user input
