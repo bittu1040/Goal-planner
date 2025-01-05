@@ -45,6 +45,7 @@ export class TimelineComponent {
       }
     }
   }
+  
 
   downloadGoals(format: string) {
     // Collect user input
