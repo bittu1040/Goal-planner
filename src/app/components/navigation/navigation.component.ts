@@ -1,6 +1,7 @@
 import { NgClass } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-navigation',
@@ -8,12 +9,24 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss'
 })
-export class NavigationComponent {
+export class NavigationComponent implements OnInit {
+
+  dataService = inject(DataService);
+
   isCollapsed = true;
-  isDarkTheme = false; // Default to light theme
+  isDarkTheme = this.dataService.theme(); // Default to light theme
+
+  ngOnInit() {
+    this.applyTheme();
+  }
 
   toggleTheme() {
     this.isDarkTheme = !this.isDarkTheme;
-    document.body.classList.toggle('dark-theme', this.isDarkTheme);
+    this.dataService.updateTheme(this.isDarkTheme);
+    this.applyTheme();
+  }
+
+  private applyTheme() {
+    this.isDarkTheme ? document.body.classList.add('dark-theme') : document.body.classList.remove('dark-theme');
   }
 }

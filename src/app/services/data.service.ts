@@ -8,16 +8,30 @@ export class DataService {
   private readonly STORAGE_KEY = 'goals';
   private goalsSignal = signal<Goal[]>(this.loadInitialGoals());
 
+  private readonly THEME_KEY = 'isDarkTheme';
+  private themeSignal = signal<boolean>(this.loadInitialTheme());
+
   goals = computed(() => this.goalsSignal());
+  theme = computed(() => this.themeSignal());
 
   private loadInitialGoals(): Goal[] {
     const storedGoals = localStorage.getItem(this.STORAGE_KEY);
     return storedGoals ? JSON.parse(storedGoals) : [];
   }
 
+  private loadInitialTheme(): boolean {
+    const storedTheme = localStorage.getItem(this.THEME_KEY);
+    return storedTheme ? JSON.parse(storedTheme) : false;
+  }
+
   private updateLocalStorage(goals: Goal[]): void {
     localStorage.setItem(this.STORAGE_KEY, JSON.stringify(goals));
     this.goalsSignal.set(goals);
+  }
+
+  updateTheme(isDark: boolean): void {
+    localStorage.setItem(this.THEME_KEY, JSON.stringify(isDark));
+    this.themeSignal.set(isDark);
   }
 
   addGoal(goal: Goal): void {
