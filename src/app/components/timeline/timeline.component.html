@@ -35,7 +35,11 @@
         </div>
        }
      }
-    @else {
+    @else if (goals().length > 0 && !showActive() && !showArchived()){
+      <div class="no-goals">
+        <p>Please select any checkbox to see data</p>
+      </div>
+    } @else {
       <div class="no-goals">
         <p>No goals added yet. Please add your first goal!</p>
       </div>
