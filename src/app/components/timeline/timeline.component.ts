@@ -16,7 +16,7 @@ export class TimelineComponent {
   dataService = inject(DataService);
 
   showActive = signal(true);
-  showArchived = signal(true);
+  showArchived = signal(false);
   goals = this.dataService.goals;
 
   filteredGoals = computed(() => 
