@@ -26,6 +26,8 @@ export class TimelineComponent {
     )
   );
 
+  isDarkTheme = this.dataService.theme;
+
   onActionClick(goal: Goal): void {
     if (goal.goalState === 'active') {
       const confirmArchive = window.confirm(
@@ -57,26 +59,33 @@ export class TimelineComponent {
     }
 
     // Dynamically add a header with user details
-    const element = document.querySelector(
-      '.timeline-container'
-    ) as HTMLElement;
+    const timelineParent = document.querySelector('.timeline-parent') as HTMLElement;
+    const timelineUserInfo = document.querySelector('.timeline-user-info') as HTMLElement;
 
     // Create a header section with user details
     const header = document.createElement('div');
-    header.style.marginBottom = '20px';
+    header.style.margin= '10px';
     header.style.textAlign = 'center';
     header.style.borderBottom = '1px solid #ccc';
-    header.style.paddingBottom = '10px';
+    header.style.paddingTop = '10px';
     header.innerHTML = `
     <h2>${userName}</h2>
     <p><strong>LinkedIn:</strong> <a href="${linkedinProfile}" target="_blank">${linkedinProfile}</a></p>
   `;
 
-    // Prepend the header to the timeline-container
-    element.prepend(header);
+    // Append the header to the timeline-parent
+    timelineUserInfo.append(header);
+
+    // Get the current used background color variable
+    const bgColor = getComputedStyle(document.body).getPropertyValue('--bg-color');
+
+    // Set background color based on theme
+    const canvasOptions = {
+      backgroundColor: this.isDarkTheme() ? bgColor: bgColor,
+    };
 
     // Generate the canvas and download
-    html2canvas(element).then((canvas) => {
+    html2canvas(timelineParent, canvasOptions).then((canvas) => {
       if (format === 'png') {
         const link = document.createElement('a');
         link.href = canvas.toDataURL('image/png');
