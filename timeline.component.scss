@@ -1,0 +1,134 @@
+@use '../../../styles' as *;
+
+.timeline {
+  margin-top: 2rem;
+  padding: 2rem;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px var(--box-shadow-color);
+
+  .timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .timeline__Wrapper{
+    display: flex;
+    gap: 40px;
+     & > div.goal {
+      width: 50%;
+      
+     }
+  }
+
+  
+  
+
+  .download-icon {
+    color: var(--text-color);
+    font-size: 1.5rem;
+  }
+
+  .timeline-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: flex-start;
+    padding: 1rem;
+    background: #e1f7e6;
+    min-height: 200px;
+  }
+
+  .no-goals {
+    text-align: center;
+    margin-top: 2rem;
+    width: 100%;
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+.timeline-box {
+  position: relative;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--text-color);
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 250px; 
+  cursor: move;
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-title {
+    margin-top: 0;
+  }
+
+  .timeline-date {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+  }
+  .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+    display: none;
+  }
+
+  &:hover .close-btn {
+    display: block;
+  }
+}
+
+.filter-container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 1rem;
+
+  .form-check-label {
+    margin-right: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .timeline-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .timeline-box {
+    width: 100%; 
+    max-width: 250px;
+  }
+}
+
+
+.state-badge {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8em;
+  background-color: #28a745;
+  color: white;
+}
+.state-badge.archived {
+  background-color: #6c757d;
+}
