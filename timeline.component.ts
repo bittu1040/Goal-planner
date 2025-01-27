@@ -12,6 +12,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [FormsModule,CdkDropListGroup, CdkDropList, CdkDrag],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
+  standalone:true
 })
 export class TimelineComponent {
   Math = Math;
