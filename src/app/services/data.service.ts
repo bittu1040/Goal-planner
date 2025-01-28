@@ -48,6 +48,14 @@ export class DataService {
     this.updateLocalStorage(updatedGoals);
   }
 
+  arctiveGoal(goalToArchive: Goal): void {
+    const currentGoals = this.goalsSignal();
+    const updatedGoals = currentGoals.map(goal => 
+      goal === goalToArchive ? { ...goal, goalState: 'active' as 'active' } : goal
+    );
+    this.updateLocalStorage(updatedGoals);
+  }
+  
   removeGoal(goalToRemove: Goal): void {
     const currentGoals = this.goalsSignal();
     const updatedGoals = currentGoals.filter(goal => goal !== goalToRemove);

@@ -1,5 +1,5 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { Goal } from '../models/goal.model';
+import { Goal } from './src/app/models/goal.model';
 
 @Injectable({
   providedIn: 'root'

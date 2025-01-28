@@ -1,15 +1,18 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { FormsModule } from '@angular/forms';
 import { Goal } from '../../models/goal.model';
+import {CdkDrag,CdkDropListGroup,CdkDropList, CdkDragDrop, moveItemInArray, transferArrayItem, CdkDragExit} from '@angular/cdk/drag-drop';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-timeline',
-  imports: [FormsModule],
+  imports: [FormsModule,CdkDropListGroup, CdkDropList, CdkDrag],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
+  standalone:true
 })
 export class TimelineComponent {
   Math = Math;
@@ -19,6 +22,41 @@ export class TimelineComponent {
   showArchived = signal(false);
   goals = this.dataService.goals;
 
+  // Active Goals
+  activeGoals = computed(() => 
+    this.goals().filter(goal => 
+      goal.goalState === 'active'
+    )
+  );
+
+  // Archieved Goals
+  archievedGoals = computed(() => 
+    this.goals().filter(goal => 
+      goal.goalState === 'archived'
+    )
+  );
+  
+  //update data on Drop 
+  updateGoal(goal: any): void {
+    goal.goalState === 'active' ? this.dataService.archiveGoal(goal) :  this.dataService.arctiveGoal(goal);
+    }
+  
+  drop(event: CdkDragDrop<Goal[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+      this.updateGoal(event.item.data)  
+    }
+  }
+
+  
+  
   filteredGoals = computed(() => 
     this.goals().filter(goal => 
       (goal.goalState === 'active' && this.showActive()) || 
@@ -26,6 +64,7 @@ export class TimelineComponent {
     )
   );
 
+  
   isDarkTheme = this.dataService.theme;
 
   onActionClick(goal: Goal): void {
