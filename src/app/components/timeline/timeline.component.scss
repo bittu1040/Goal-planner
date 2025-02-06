@@ -15,6 +15,34 @@
     margin-bottom: 1rem;
   }
 
+  .timeline__Wrapper {
+    display: flex;
+    gap: 40px;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+    }
+
+    &>div.goal {
+      width: 50%;
+
+      @media (max-width: 576px) {
+        width: 100%;
+      }
+
+    }
+
+    
+  }
+
+  .goal-card {
+    width: 100%;
+
+    @media (max-width: 576px) {
+      width: 100%;
+    }
+  }
+
   .download-icon {
     color: var(--text-color);
     font-size: 1.5rem;
@@ -25,7 +53,7 @@
     flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: flex-start;
-    padding: 1rem;
+    padding: 0;
     // background: #e1f7e6;
     min-height: 200px;
   }
@@ -49,8 +77,15 @@
   padding: 1rem;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 250px; 
+  min-width: 250px;
   cursor: move;
+  &.drag-palaceholder {
+    background: none;
+    min-height: 134px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   // .card-body {
   //   padding: 1rem;
@@ -66,6 +101,7 @@
     font-size: 0.9rem;
     color: var(--text-color);
   }
+
   .close-btn {
     position: absolute;
     top: 10px;
@@ -101,8 +137,9 @@
   }
 
   .timeline-box {
-    width: 100%; 
-    max-width: 250px;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
   }
 }
 
@@ -117,18 +154,7 @@
   background-color: #28a745;
   color: white;
 }
+
 .state-badge.archived {
   background-color: #6c757d;
-}
-
-@media (max-width: 576px) {
-.timeline__Wrapper{
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-   & > div.goal {
-    width: 100%;
-    
-   }
- }
 }
